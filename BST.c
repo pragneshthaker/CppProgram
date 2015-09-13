@@ -12,6 +12,7 @@ void preorder(node *);
 void postorder(node *);
 node *search(node *, int, node **);
 node *findP(node *,int);
+node *findMin(node *T);
  
 int main() {
    int choice;
@@ -210,13 +211,23 @@ void deleteNode(node **T,int x){
 	
 	parent = findP(T,x);
 	
-	if(parent == T){//deleting the root node
-			if(T->lchild == NULL and T->rchild == NULL){
-				*T=NULL
-			}
-			else if(T->rchild == NULL){
-				
-			}
+	if(parent == T){
+			//deleting the root node Root is leaf
+				if(T->lchild == NULL and T->rchild == NULL){
+					*T=NULL
+					free(parent);
+				}
+			//if root is not leaf but does not have right child
+				else if(T->rchild == NULL){
+					T = T->left;
+					free(parent);
+					
+				}
+				succ = findMin(T->rchild);
+				else if( succ == T->rchild){
+					succ->lchild = T->lchild;
+					T=succ;
+				}
 	}
 	
 	//case 1: Delete the leaf node
