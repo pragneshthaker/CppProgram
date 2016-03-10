@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #ifndef BST_C
 #define BST_C
 
@@ -6,6 +7,11 @@
 
 //let make small change
 
+=======
+# include <stdio.h>
+# include <stdlib.h>
+ 
+>>>>>>> 7809d890714669b1c8e9ce314ac46bb9a06c22d2
 typedef struct BST {
    int data;
    struct BST *lchild, *rchild;
@@ -17,6 +23,10 @@ void preorder(node *);
 void postorder(node *);
 node *search(node *, int, node **);
 node *findP(node *,int);
+<<<<<<< HEAD
+=======
+node *findMin(node *T);
+>>>>>>> 7809d890714669b1c8e9ce314ac46bb9a06c22d2
  
 int main() {
    int choice;
@@ -215,6 +225,7 @@ void deleteNode(node **T,int x){
 	
 	parent = findP(T,x);
 	
+<<<<<<< HEAD
 	if(parent == T){//deleting the root node
 			if(T->lchild == NULL and T->rchild == NULL){
 				*T=NULL
@@ -229,3 +240,36 @@ void deleteNode(node **T,int x){
 }
 #endif        //  #ifndef BST_C
 
+=======
+	if(parent == T){
+			//deleting the root node Root is leaf
+				if(T->lchild == NULL and T->rchild == NULL){
+					*T=NULL
+					free(parent);
+				}
+			//if root is not leaf but does not have right child
+				else if(T->rchild == NULL){
+					T = T->left;
+					free(parent);
+					
+				}
+				succ = findMin(T->rchild);
+				else if( succ == T->rchild){
+					succ->lchild = T->lchild;
+					T=succ;
+				}
+	}
+	
+	//case 1: Delete the leaf node
+	
+	
+	//case 2: Delete the node having no right child
+	
+	
+	//case 3: Delete a node whos immediate right child is succ
+	
+	
+	//case 4
+
+}
+>>>>>>> 7809d890714669b1c8e9ce314ac46bb9a06c22d2
